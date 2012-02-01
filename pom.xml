@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>ru.mesotron</groupId>
+    <artifactId>jpauc</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name>Jpauc ${project.version}</name>
+
+    <modules>
+        <module>jpauc-ejb</module>
+        <module>jpauc-web</module>
+        <module>jpauc-ear</module>
+    </modules>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.7</maven.compiler.source>
+        <maven.compiler.target>1.7</maven.compiler.target>
+        <gwt.version>2.4.0</gwt.version>
+        <gwt.persistentunitcachedir>target</gwt.persistentunitcachedir>
+        <gxt.version>3.0.0-beta2</gxt.version>
+        <hibernate.validator.version>4.2.0.Final</hibernate.validator.version>
+        <junit.version>4.7</junit.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- EJB module -->
+            <dependency>
+                <groupId>ru.mesotron</groupId>
+                <artifactId>jpauc-ejb</artifactId>
+                <version>${project.version}</version>
+                <type>ejb</type>
+            </dependency>
+
+            <!-- WAR module -->
+            <dependency>
+                <groupId>ru.mesotron</groupId>
+                <artifactId>jpauc-web</artifactId>
+                <version>${project.version}</version>
+                <type>war</type>
+                <scope>compile</scope>
+            </dependency>
+
+            <!-- Hibernate Validator -->
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-validator</artifactId>
+                <version>${hibernate.validator.version}</version>
+                <scope>provided</scope>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.slf4j</groupId>
+                        <artifactId>slf4j-api</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
+            <!-- Junit -->
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+                <type>jar</type>
+                <scope>test</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+<!-- Turn off JRebel in Production
+It's sample
+<profiles>
+        <profile>
+            <id>jrebel</id>
+            <activation>
+                <property>
+                    <name>m2e.version</name>
+                </property>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.zeroturnaround</groupId>
+                        <artifactId>jrebel-maven-plugin</artifactId>
+                        <version>1.0.7</version>
+                        <executions>
+                            <execution>
+                                <id>generate-rebel-xml</id>
+                                <phase>process-resources</phase>
+                                <goals>
+                                    <goal>generate</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles> 
+ -->
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.zeroturnaround</groupId>
+                <artifactId>jrebel-maven-plugin</artifactId>
+                <version>1.1.0</version>
+                <executions>
+                    <execution>
+                        <id>generate-rebel-xml</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.eclipse.m2e</groupId>
+                    <artifactId>lifecycle-mapping</artifactId>
+                    <version>1.0.0</version>
+                    <configuration>
+                        <lifecycleMappingMetadata>
+                            <pluginExecutions>
+                                <pluginExecution>
+                                    <pluginExecutionFilter>
+                                        <groupId>org.zeroturnaround</groupId>
+                                        <artifactId>jrebel-maven-plugin</artifactId>
+                                        <versionRange>[1.1.0,)</versionRange>
+                                        <goals>
+                                            <goal>generate</goal>
+                                        </goals>
+                                    </pluginExecutionFilter>
+                                    <action>
+                                        <ignore></ignore>
+                                    </action>
+                                </pluginExecution>
+                            </pluginExecutions>
+                        </lifecycleMappingMetadata>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                        <version>2.3.2</version>
+                        <configuration>
+                            <source>${maven.compiler.source}</source>
+                            <target>${maven.compiler.target}</target>
+                        </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+    <repositories>
+        <repository>
+            <id>central-maven</id>
+            <url>http://repo2.maven.org/maven2</url>
+        </repository>
+        <repository>
+            <name>gin-repo</name>
+            <id>gin-repo</id>
+            <url>https://github.com/larsenje/google-gin-pom/raw/master/maven/snapshots</url>
+        </repository>
+        <repository>
+            <id>jboss-public-repository-group</id>
+            <name>JBoss Public Repository Group</name>
+            <url>http://repository.jboss.org/nexus/content/groups/public/</url>
+            <layout>default</layout>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>never</updatePolicy>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>never</updatePolicy>
+            </snapshots>
+        </repository>
+        <repository> 
+            <id>java.net</id> 
+            <name>GlassFish Maven Repository</name> 
+            <url>http://download.java.net/maven/glassfish</url> 
+        </repository>
+    </repositories>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>codehaus-snapshot-repository</id>
+            <name>Codehaus Snapshot Repository</name>
+            <url>https://nexus.codehaus.org/content/repositories/snapshots</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
+</project>

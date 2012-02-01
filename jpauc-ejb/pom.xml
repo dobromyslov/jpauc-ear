@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>jpauc-ejb</artifactId>
+    <packaging>ejb</packaging>
+    <name>jpauc EJB module</name>
+
+    <parent>
+        <artifactId>jpauc</artifactId>
+        <groupId>ru.mesotron</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <properties>
+        <hibernate.version>4.0.1.Final</hibernate.version>
+        <hibernate.jpa.version>1.0.1.Final</hibernate.jpa.version>
+        <commons.codec.version>1.6</commons.codec.version>
+        <javax.ejb.version>3.1.1</javax.ejb.version>
+    </properties>
+
+    <dependencies>
+        <!-- Hibernate Core -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>${hibernate.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>jboss-logging</artifactId>
+                    <groupId>org.jboss.logging</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>jboss-transaction-api_1.1_spec</artifactId>
+                    <groupId>org.jboss.spec.javax.transaction</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <!-- Hibernate EntityManager -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-entitymanager</artifactId>
+            <version>${hibernate.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>jboss-logging</artifactId>
+                    <groupId>org.jboss.logging</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>jboss-transaction-api_1.1_spec</artifactId>
+                    <groupId>org.jboss.spec.javax.transaction</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <!-- Hibernate Envers -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-envers</artifactId>
+            <version>${hibernate.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>jboss-logging</artifactId>
+                    <groupId>org.jboss.logging</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <!-- Hibernate JPA -->
+        <dependency>
+            <groupId>org.hibernate.javax.persistence</groupId>
+            <artifactId>hibernate-jpa-2.0-api</artifactId>
+            <version>${hibernate.jpa.version}</version>
+        </dependency>
+
+        <!-- Hibernate Validator -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+        </dependency>
+
+        <!-- Commons Codec -->
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>${commons.codec.version}</version>
+        </dependency>
+
+        <!-- GlassFish EJB -->
+        <dependency>
+            <groupId>org.glassfish</groupId>
+            <artifactId>javax.ejb</artifactId>
+            <version>${javax.ejb.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- Test scope dependencies -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <!-- 
+            <plugin>
+                <groupId>org.zeroturnaround</groupId>
+                <artifactId>jrebel-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>generate-rebel-xml</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+             -->
+            <plugin>
+                <artifactId>maven-ejb-plugin</artifactId>
+                <version>2.3</version>
+                <configuration>
+                    <ejbVersion>3.1</ejbVersion>
+                </configuration>
+            </plugin>
+        </plugins>
+        
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.eclipse.m2e</groupId>
+                    <artifactId>lifecycle-mapping</artifactId>
+                    <version>1.0.0</version>
+                    <configuration>
+                        <lifecycleMappingMetadata>
+                            <pluginExecutions>
+                                <!-- 
+                                <pluginExecution>
+                                    <pluginExecutionFilter>
+                                        <groupId>org.zeroturnaround</groupId>
+                                        <artifactId>jrebel-maven-plugin</artifactId>
+                                        <versionRange>[1.1.0,)</versionRange>
+                                        <goals>
+                                            <goal>generate</goal>
+                                        </goals>
+                                    </pluginExecutionFilter>
+                                    <action>
+                                        <ignore></ignore>
+                                    </action>
+                                </pluginExecution>
+                                 -->
+                            </pluginExecutions>
+                        </lifecycleMappingMetadata>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+</project>

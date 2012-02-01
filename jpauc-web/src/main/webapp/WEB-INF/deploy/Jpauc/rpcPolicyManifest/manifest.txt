@@ -1,0 +1,4 @@
+# Module Jpauc
+# RPC service class, partial path of RPC policy file
+com.google.gwt.logging.shared.RemoteLoggingService, 2F8A99A0C55DCE1FC6CB1C4037931823.gwt.rpc
+ru.mesotron.jpauc.client.GreetingService, D098213F9EBBFB1A764200A6F08ED5E8.gwt.rpc

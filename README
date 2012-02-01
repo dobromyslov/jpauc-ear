@@ -1,0 +1,35 @@
+
+Maven GWT EAR project
+=====================
+
+It took me about a week to make all IDE and CLI components work together.
+
+Key features
+============
+
+1. IDE Eclipse Indigo with plugins
+
+2. Technology stack
+- Maven 3
+- GWT 2.4.0
+- GXT 3-beta2
+- GWTP 0.6
+- JPA (Hibernate 4.0.1) 
+- Envers audit (from Hibernate)
+
+3. EAR application with simple deployment to GlassFish 3.1.1
+- EJB module
+- WEB module (GWT client + server)
+
+4. Great development tools:
+- JRebel Social (deployment takes seconds and completely automatic)
+- Eclipse debug on external server (easy debug of EAR app on external GlassFish)
+- GWT Development mode debug on external server (Throw out Jetty, debug your GWT on GlassFish)
+
+Notes
+=====
+Deployment to server works only after jpauc-ejb mvn packaging.
+Compiling gwt to src/main/webapp. It's required for eclipse WTP deployment 
+and GWT debug.
+
+Eclipse plugins are presented on the screenshots in the root directory.

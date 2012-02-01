@@ -1,0 +1,2 @@
+serviceClass: ru.mesotron.jpauc.client.GreetingService
+path: D098213F9EBBFB1A764200A6F08ED5E8.gwt.rpc

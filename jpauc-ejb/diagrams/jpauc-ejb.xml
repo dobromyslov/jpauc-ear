@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><entities>
+	<entity>
+		<entity-name>ru.mesotron.jpauc.domain.envers.RevisionEntity</entity-name>
+		<entity-width>120</entity-width>
+		<entity-height>146</entity-height>
+		<entity-X-Coordinate>50</entity-X-Coordinate>
+		<entity-Y-Coordinate>50</entity-Y-Coordinate>
+		<primary-collapsed>false</primary-collapsed>
+		<relation-collapsed>false</relation-collapsed>
+		<basic-collapsed>false</basic-collapsed>
+	</entity>
+
+	<entity>
+		<entity-name>ru.mesotron.jpauc.domain.auth.User</entity-name>
+		<entity-width>120</entity-width>
+		<entity-height>248</entity-height>
+		<entity-X-Coordinate>460</entity-X-Coordinate>
+		<entity-Y-Coordinate>212</entity-Y-Coordinate>
+		<primary-collapsed>false</primary-collapsed>
+		<relation-collapsed>false</relation-collapsed>
+		<basic-collapsed>false</basic-collapsed>
+	</entity>
+
+	<entity>
+		<entity-name>ru.mesotron.jpauc.domain.auth.Group</entity-name>
+		<entity-width>120</entity-width>
+		<entity-height>128</entity-height>
+		<entity-X-Coordinate>930</entity-X-Coordinate>
+		<entity-Y-Coordinate>50</entity-Y-Coordinate>
+		<primary-collapsed>false</primary-collapsed>
+		<relation-collapsed>false</relation-collapsed>
+		<basic-collapsed>false</basic-collapsed>
+	</entity>
+
+	<entity>
+		<entity-name>ru.mesotron.jpauc.domain.auth.Permission</entity-name>
+		<entity-width>120</entity-width>
+		<entity-height>32</entity-height>
+		<entity-X-Coordinate>540</entity-X-Coordinate>
+		<entity-Y-Coordinate>55</entity-Y-Coordinate>
+		<primary-collapsed>false</primary-collapsed>
+		<relation-collapsed>false</relation-collapsed>
+		<basic-collapsed>false</basic-collapsed>
+	</entity>
+</entities>
